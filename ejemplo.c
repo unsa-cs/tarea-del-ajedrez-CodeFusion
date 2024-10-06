@@ -8,20 +8,20 @@ void display(){
   // Crear un arreglo bidimensional para representar el tablero
     char** tablero[8][8];
 
-    // Dibujar la primera fila alternando entre casillas blancas y negras
+  
     for (int j = 0; j < 8; j++) {
-        if (j % 2 == 0) {
+        if ((j+1) % 2 == 0) {
             tablero[0][j] = whiteSquare;  // Casilla blanca en las posiciones pares
         } else {
             tablero[0][j] = reverse(whiteSquare);  // Casilla negra en las posiciones impares
         }
     }
 
-    // Renderizar la primera fila del tablero
-    for (int j = 0; j < 8; j++) {
-        interpreter(tablero[0][j]);  // Dibuja la casilla en la posición correspondiente
+    for (int j = 1; j < 8; j++) {
+        tablero[0][0] = join(tablero[0][0], tablero[0][j]);
     }
 
+        interpreter(tablero[0][0]);
 /////////////////////////////
 
 }
