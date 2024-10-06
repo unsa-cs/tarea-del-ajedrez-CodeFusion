@@ -22,19 +22,40 @@ void display(){
   char** blackPawn = reverse(pawn);                          //
 ////////////////////////
 ///
-    char** whiteSquare = whiteSquare; a
+    char** blancoSquare = whiteSquare;
 
-    char** firstRow = join(whiteKing, repeatH(whiteSquare, 7));
+    char** firstRow = join(whiteKing,repeatH(blancoSquare,4));
 
-    char** otherRow = repeatH(whiteSquare, 8);
+    char** otherRow = repeatV(whiteSquare,5);
+/*
+    char** firstRow = join(whiteKing, repeatH(blancoSquare, 5));
+
+    char** otherRow = repeatH(whiteSquare, 6);
 
     char** chessBoard = up(firstRow, repeatV(otherRow, 7));
 
-    interpreter(chessBoard);
+    interpreter(chessBoard) ; **/
+///////////////////////////////////////////////
 
+  // Crear un arreglo bidimensional para representar el tablero
+    char** tablero[8][8];
 
-//liberamos la memoria ya que reverse usa malloc
-  free(blackKing);
+    // Dibujar la primera fila alternando entre casillas blancas y negras
+    for (int j = 0; j < 8; j++) {
+        if (j % 2 == 0) {
+            tablero[0][j] = whiteSquare;  // Casilla blanca en las posiciones pares
+        } else {
+            tablero[0][j] = reverse(whiteSquare);  // Casilla negra en las posiciones impares
+        }
+    }
+
+    // Renderizar la primera fila del tablero
+    for (int j = 0; j < 8; j++) {
+        interpreter(tablero[0][j]);  // Dibuja la casilla en la posición correspondiente
+    }
+
+/////////////////////////////
+   // interpreter(otherRow);
   free(blackQueen);
   free(blackRook);
   free(blackBishop);
