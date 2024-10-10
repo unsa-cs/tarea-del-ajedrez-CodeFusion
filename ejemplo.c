@@ -2,6 +2,7 @@
 #include "figures.h"
 #include <stdlib.h>
 #include <stdio.h>
+
 void display(){
 ////PIEZAS BLANCAS
   char** whiteKing = flipH(king);
@@ -88,6 +89,18 @@ void display(){
   interpreter(tableroCompleto);
 
 
+  ////Liberamos La memoria
+ 
+  free(blackKing);
+  free(blackQueen);
+  free(blackRook);
+  free(blackBishop);
+  free(blackKnight);
+  free(blackPawn);
 
-}
+    
+
+ }
+
+
 
